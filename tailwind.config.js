@@ -7,10 +7,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        gilroy: ['Gilroy-Regular', 'sans-serif'],
+        mont: ['Montserrat', 'sans-serif'],
+      },
+      fontSize: {
+        '32px': '32px',
+      },
+      lineHeight: {
+        '42.5': '42.5px',
+      },
+      colors: {
+        Customblack: 'rgba(30, 32, 38, 1)',
+        CustomSkin:"rgba(255, 255, 255, 0.64)"
       },
     },
   },
