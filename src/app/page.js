@@ -120,7 +120,7 @@ export default function Home() {
         {/* Large Image Box */}
         <div className="flex-1 p-6 w-[343.83px] h-[200px] rounded-lg">
           <img
-            src="/img/Frame 1321318565(2).png"
+            src="/Image/Frame 1321318565(2).png"
             alt="Big Image"
             className="w-full h-auto rounded-lg object-cover mb-4 shadow-lg"
           />
@@ -134,7 +134,7 @@ export default function Home() {
           {/* Document Image */}
           <div className="bg-gray-200 rounded-lg flex items-center justify-center">
             <img
-              src="/img/doc.png" // Replace with your image path
+              src="/Image/doc.png" // Replace with your image path
               alt="Document"
               className="w-full h-auto object-cover rounded-lg"
             />
@@ -174,7 +174,7 @@ export default function Home() {
           {/* Document Image */}
           <div className="bg-gray-200 rounded-lg flex items-center justify-center">
             <img
-              src="/img/doc.png" // Replace with your image path
+              src="/Image/doc.png" // Replace with your image path
               alt="Document"
               className="w-full h-auto object-cover rounded-lg"
             />

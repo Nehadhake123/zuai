@@ -1,5 +1,4 @@
-// src/store/useUploadStore.js
-import create from 'zustand';
+import { create } from 'zustand';
 
 const useUploadStore = create((set) => ({
   uploadedFile: null,

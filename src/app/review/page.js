@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
@@ -11,31 +11,33 @@ export default function Review() {
   const [score, setScore] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [additionalInfo, setAdditionalInfo] = useState([]);
   const [criteriaScores, setCriteriaScores] = useState({});
   const [openCriteria, setOpenCriteria] = useState(null);
+
+  const analyzeDocument = useCallback(async (file) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fakeDocumentAnalysis(file);
+      setScore(response.score);
+      setSuggestions(response.suggestions);
+    } catch (error) {
+      setError('Failed to analyze document. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (uploadedFile) {
       setPdfUrl(URL.createObjectURL(uploadedFile));
       analyzeDocument(uploadedFile);
     }
-  }, [uploadedFile]);
+  }, [uploadedFile, analyzeDocument]);
 
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
-
-  const analyzeDocument = async (file) => {
-    setLoading(true);
-    try {
-      const response = await fakeDocumentAnalysis(file);
-      setScore(response.score);
-      setSuggestions(response.suggestions);
-    } catch (error) {
-      console.error('Error analyzing document:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const fakeDocumentAnalysis = async (file) => {
     return new Promise((resolve) => {
